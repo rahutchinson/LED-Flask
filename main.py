@@ -23,7 +23,7 @@ def compile_LED_to_JS(LED_code_string):
 """
 
 def compile_LED_to_JS(LED_code_string):
-    helper_js_string = open_file_as_string("/home/rahutchinson/mysite/helpers.js")
+    helper_js_string = open_file_as_string("/home/rahutchinson/LED-Flask/helpers.js")
 
 
     LED_code = preprocess_codeblocks(LED_code_string)
