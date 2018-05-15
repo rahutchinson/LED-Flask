@@ -1,0 +1,20 @@
+body {
+  background-color: black;
+  color: #55ff55;
+  font-family: monospace;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+tab {
+    display: table-cell;
+}
+.center {
+    text-align: center;
+}
+
+textarea {
+    text-align: left;
+}

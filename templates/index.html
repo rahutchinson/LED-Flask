@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cssConsole.css') }}">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+
+    </style>
+  </head>
+
+  <body onload="init();">
+
+
+    </div>
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='cssConsole.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='site.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    </div>
+    	<div>
+
+		<ul class="nav nav-tabs nav-justified" role="tablist">
+		    <li role="presentation"><a href="#Evaluator" aria-controls="Evaluator" role="tab" data-toggle="tab" ><h2>Evaluator</h2></a></li>
+			<li role="presentation" class="active"><a href="#Logic" aria-controls="Logic" role="tab" data-toggle="tab" ><h2>Logic</h2></a></li>
+			<li role="presentation"><a href="#Game" aria-controls="Game" role="tab" data-toggle="tab"><h2>Game</h2></a></li>
+		</ul><!-- ./ nav tabs -->
+
+	<div class="tabs-pages">
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane" id="Evaluator">
+				<div class="container">
+                    <div class="container console">
+    <div class="page-header">
+        <h1>LED Evaluator</h1>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">
+                Evaluator
+            </div>
+            <form action='/index'  method="POST">
+              <input type="text" name="input" id="LED">
+              <input type="submit" value="Evaluate"/>
+            </form>
+        </div>
+    <div class="panel-body">
+        <table class="table">
+        <thead>
+            <tr>
+                <th>Input</th>
+                <th>Ouput</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if history %}
+            {% for line in history %}
+            <tr>
+                <td>{{ line[0] }}</td>
+                <td>{{ line[1] }}</td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+        </ul>
+    </tbody>
+    </table>
+    </div>
+				</div>
+			</div>
+			</div>
+			</div>
+			<div role="tabpanel" class="tab-pane active" id="Logic">
+			    <table class="center">
+			        <tr>
+			            <th>LED</th>
+			            <th>JavaScript</th>
+			        </tr>
+			        <tr>
+			            <td>
+			                <form action='/logic' method="POST">{% if LED %}
+                            <textarea name="LEDLogic" rows="25" cols="35">{{ LED }}</textarea><br>
+                            {% else %}
+                            <textarea name="LEDLogic" rows="25" cols="35"></textarea><br>
+                            {% endif %}
+			                <input type="submit" value="Compile"/>
+			                </form>
+                        </td>
+                        <td>{% if js %}
+                            <textarea name="js" rows="25" cols="35">{{ js }}</textarea>
+                            {% else %}
+                            <textarea name="js" rows="25" cols="35"></textarea>
+                            {% endif %}
+                        </td>
+			        </tr>
+			    </table>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="Game">
+        <div class="center">
+            <canvas id="demoCanvas" width="500" height="200"></canvas>
+        </div>
+    </div>
+		</div>
+
+
+
+</div>
+
+  <div class="panel-footer">
+        <a type="button" class="btn btn-default" href="https://docs.google.com/document/d/1xj5VUX6l9NYXQFuT-gVksSMwx5ovuQFkGymcgoZBagc/edit" target="_blank">
+            LED Spec
+        </a>
+    </div>
+  </body>
+
+      <script>
+      $('#LED').cssConsole();
+
+    </script>
+</html>
